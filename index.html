@@ -3,7 +3,15 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    </head>
+    <body>
+        <p>Hey Sucka!</p>
+        <div id="chatText">Chat Text!</div>
+        <input type="text" name="sayit" id="sayit"/><input type="submit" value="Say it!" />
+    </body>    
+    
+    <script>
             var socket = io.connect('http://sockets.jeeper31.c9.io');
             socket.on('news', function (data) {
                 $("#chatText").append("<br/>" + data.my);
@@ -21,20 +29,12 @@
                 });
             });
             
-            $("#sayit").keyup(function(event) {
+            $("#sayit").keydown(function(event) {
                 if (event.which == 13) {
                     sendMessage();
                 }
             });
           
-        </script>
-        
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    </head>
-    <body>
-        <p>Hey Sucka!</p>
-        <div id="chatText">Chat Text!</div>
-        <input type="text" name="sayit" id="sayit"/><input type="submit" value="Say it!" />
-    </body>    
+    </script>
     
 </html>
